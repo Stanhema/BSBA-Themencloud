@@ -1,0 +1,72 @@
+@font-face {
+  font-family: FKGroteskSemiMonoRegular;
+  src: url(./sources/FK_Grotesk_woff2/FKGrotesk-Thin.woff2);
+  }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+	margin: 0;
+	padding: 0;
+  overflow: hidden;
+	}
+
+h1 {
+  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  font-size: 120px;
+  line-height: 110px;
+  color: black;
+  }
+
+@media only screen and (max-width: 900px) {
+    h1 {
+      font-size: 60px;
+      line-height: 50px;
+    }
+  }
+
+a {
+  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  text-decoration: none;
+}
+
+.button-white {
+  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: black;
+  border-style: none; 
+  padding: 5px 12px 5px 12px; 
+  color: white;
+  transition: 0.3s;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 6px 1px rgba(25, 35, 44, 0.4);
+  }
+
+button:hover { 
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  }
+
+.scrollbox-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  }
+
+.textbox {
+  width: 55%;
+  padding: 5px;
+  color: #293645;
+  text-align: center;
+  }
