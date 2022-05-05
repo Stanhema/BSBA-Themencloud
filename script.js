@@ -6,13 +6,13 @@ import { OrbitControls } from './sources/OrbitControls.js';
 // 🌐 GLOBAL VARIABLES -------------------------- 
 
 let scene, renderer, camera, controls, pointer, raycaster;
-let Cubes = [];
 
 // INTERACTION
 pointer = new THREE.Vector2();
 raycaster = new THREE.Raycaster();
 
-let nearToPivotPoint = 4; //Info: The higher the closer //5 is very far away, 20 is very close
+var nearToPivotPoint = 2; //Info: The higher the closer //5 is very far away, 20 is very close
+console.log(nearToPivotPoint);
 
 // RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
 Promise.all([
@@ -143,10 +143,10 @@ function init(data) {
   let keyWordList = [keywords1, keywords2, keywords3, keywords4, keywords5, keywords6, keywords7, keywords8];
   let keyWordLengthList = [keywords1Length, keywords2Length, keywords3Length, keywords4Length, keywords5Length, keywords6Length, keywords7Length, keywords8Length]
 
-  
-  //tbd: Keywords2 usw. muss dann hier übergeben werden!
   generate_cloud(category, keyWordList, keyWordLengthList);
 
+  window.addEventListener( 'resize', onWindowResize );
+  document.addEventListener( 'click', onClick, false );
   //helper(); // Koordinatensystem  
 }
 
@@ -158,8 +158,35 @@ class categoryCube {
 
     // GEOMETRY 
 
-    this.size = 5;
-    this.geometry = new THREE.BoxBufferGeometry(this.size, this.size, this.size);
+    let size = 5;
+
+    //BOX WITH SHARP EDGES
+    this.geometry = new THREE.BoxBufferGeometry(size, size, size);
+
+    //BOX WITH ROUND EDGES
+
+    let shape = new THREE.Shape();
+    
+    /*let eps = 0.00001;
+    let radius = 0.1;
+    let radius0 = 0.1;
+    let height = size;
+    let width = size;
+    let depth = size;
+    let smoothness = 3;
+    shape.absarc(eps, eps, eps, -Math.PI / 2, -Math.PI, true);
+    shape.absarc(eps, height - radius * 2, eps, Math.PI, Math.PI / 2, true);
+    shape.absarc(width - radius * 2, height - radius * 2, eps, Math.PI / 2, 0, true);
+    shape.absarc(width - radius * 2, eps, eps, 0, -Math.PI / 2, true);
+    this.geometry = new THREE.ExtrudeBufferGeometry(shape, {
+      amount: depth - radius0 * 2,
+      bevelEnabled: true,
+      bevelSegments: smoothness * 2,
+      steps: 1,
+      bevelSize: radius,
+      bevelThickness: radius0,
+      curveSegments: smoothness
+    });*/
 
     // MATERIAL AND TEXTURE
 
@@ -173,7 +200,7 @@ class categoryCube {
       emissive: 100,
       //blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "75px Helvetica",
+      font: "45px Helvetica",
       marginTop: 0
     })
 
@@ -206,9 +233,9 @@ class Cube {
 
     //BOX WITH ROUND EDGES
 
-    /*let shape = new THREE.Shape();
+    let shape = new THREE.Shape();
     
-    let eps = 0.00001;
+    /*let eps = 0.00001;
     let radius = 0.03;
     let radius0 = 0.03;
     let height = size;
@@ -237,11 +264,11 @@ class Cube {
     this.dynamicTexture.drawTextCooked({
       background: "white", 
       text: this.keywordString,
-      lineHeight: 0.20,
+      lineHeight: 0.2,
       emissive: 100,
       //blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "150px Helvetica",
+      font: "120px Helvetica",
       marginTop: 0
     })
 
@@ -326,8 +353,6 @@ class generate_categoryCloud {
       let randomCategoryCubeZPos = categoryCubeZPos + Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1)/nearToPivotPoint;
       
       const cube = new Cube(keywordText, randomCategoryCubeXPos, randomCategoryCubeYPos, randomCategoryCubeZPos);
-      
-      Cubes.push(cube); //Array von cubes -> adds a cube into the array "Cubes"
       scene.add(cube.mesh);
     } 
   }
@@ -357,10 +382,8 @@ function generate_cloud(category, keyWordList, keyWordLengthList) {
       scene.add(categoryCubes.mesh);
 
       const categoryClouds = new generate_categoryCloud(specialKeywordList, specialKeywordLengthList, categoryCubeXPos, categoryCubeYPos, categoryCubeZPos);
-  }
+    }
 }
-
-
 
 // HOVER AND FOCUS CUBE ANIMATION
 
@@ -371,8 +394,8 @@ function resetMaterials(){
       if (scene.children[i].material) {
         scene.children[i].material.color.set( 0x002200 );
       }
-    };
-  }  
+  };
+}  
 
 function hoverCubes(nearToPivotPoint){
 
@@ -397,14 +420,48 @@ function onPointerMove( event ) {
 
 window.addEventListener( 'pointermove', onPointerMove, false);
 
+function onClick( event ) {
+
+  event.preventDefault();
+
+  pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  var intersectss = raycaster.intersectObjects(scene.children);
+
+  console.log( 'click' );
+
+  nearToPivotPoint = nearToPivotPoint*2;
+  
+  for (let i = 0; i < intersectss.length; i++) {
+    console.log( 'click on intersects' );
+    //intersectss[i].object.position.x = 10;
+    intersectss[i].object.material.emissiveIntensity = 40;
+  }
+  return nearToPivotPoint;
+}
+
 
 // ANIMATE FUNCTION -------------------------- 
 
+
+const v1 = new THREE.Vector3(3,3,3);
+
 function animate() {
+  
+  
+//  nearToPivotPoint += 0.2;
+ for (let i = 0; i <46; i++) {
+    scene.children[i].position.lerp(v1, 0.001);
+    }
+    //scene.children[i].position.x += 0.2;//3 + Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1)/0.2;
+  
 
   controls.update();
   resetMaterials();
   hoverCubes();
+  //onClick();
   renderer.render(scene, camera);
  
   // BUTTONS 
@@ -413,6 +470,17 @@ function animate() {
   };
 
   window.requestAnimationFrame(animate);
+
+}
+
+// ON WINDOW RESIZE FUNCTION -------------------------- 
+
+function onWindowResize() {
+
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
 
@@ -445,3 +513,4 @@ function helper() {
   var arrowHelper = new THREE.ArrowHelper(dir, origin, length, hex);
   scene.add(arrowHelper);
 }
+
