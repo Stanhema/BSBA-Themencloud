@@ -1,5 +1,10 @@
 @font-face {
-  font-family: FKGroteskSemiMonoRegular;
+  font-family: FKGroteskRegular;
+  src: url(./sources/FK_Grotesk_woff2/FKGrotesk-Regular.woff2);
+  }
+
+@font-face {
+  font-family: FKGrotesk-Thin;
   src: url(./sources/FK_Grotesk_woff2/FKGrotesk-Thin.woff2);
   }
 
@@ -15,7 +20,7 @@ body {
 	}
 
 h1 {
-  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  font-family: "FKGrotesk-Thin", sans-serif;
   font-size: 120px;
   line-height: 110px;
   color: black;
@@ -29,12 +34,12 @@ h1 {
   }
 
 a {
-  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  font-family: "FKGroteskRegular", sans-serif;
   text-decoration: none;
 }
 
 .button-white {
-  font-family: "FKGroteskSemiMonoRegular", sans-serif;
+  font-family: "FKGroteskRegular", sans-serif;
   border-radius: 10px;
   font-weight: 400;
   font-size: 14px;
@@ -54,7 +59,7 @@ button:hover {
   color: black;
   }
 
-.scrollbox-wrapper {
+.visible-by-click {
   position: fixed;
   width: 100vw;
   height: 100vh;
