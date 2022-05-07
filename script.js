@@ -68,13 +68,13 @@ controls.update();
 
 const skyColor = 0xffffff;
 const groundColor = 0x000000;
-const hemiIntensity = 10;
+const hemiIntensity = 4;
 const hemiLight = new THREE.HemisphereLight(skyColor, groundColor, hemiIntensity);
 hemiLight.position.set(17, 50, 17);
 //scene.add(hemiLight);
 
 const ambiColor = 0x40ff40;
-const ambiIntensity = 10;
+const ambiIntensity = 5;
 const ambiLight = new THREE.AmbientLight(ambiColor, ambiIntensity);
 scene.add(ambiLight);
 
@@ -475,9 +475,9 @@ function animate() {
 
   let test = scene.children.length;
 
-  var MIN_DISTANCE = 5;
-  const speed = 0.00009;
-
+  var MIN_DISTANCE = 6;
+  const speed = 0.005;
+/*
   for (let i = 0; i < test; i++) {
     if (scene.children[i].position.distanceTo(v0) >= MIN_DISTANCE && scene.children[i].name == "smallCube0") 
        scene.children[i].position.lerp(v0, speed);
@@ -514,12 +514,12 @@ function animate() {
     }
   
   for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v7) > MIN_DISTANCE && scene.children[i].name == "smallCube7") 
+    if (scene.children[i].position.distanceTo(v7) >= MIN_DISTANCE && scene.children[i].name == "smallCube7") 
       scene.children[i].position.lerp(v7, speed);
-    }
-    
-
-
+    else if(scene.children[i].position.distanceTo(v7) <= 8 && scene.children[i].name == "smallCube7") 
+      scene.children[i].position.lerp(v7, -speed);
+  }*/
+   
   controls.update();
   //resetMaterials();
   //hoverCubes();
