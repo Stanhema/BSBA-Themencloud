@@ -189,7 +189,7 @@ class categoryCube {
       //emissive: 100,
       blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "18px FKGroteskRegular",
+      font: "22px FKGroteskRegular",
       marginTop: 0.05
     })
 
@@ -234,7 +234,7 @@ class Cube {
       //emissive: 100,
       //blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "20px FKGroteskRegular",
+      font: "28px FKGroteskRegular",
       marginTop: 0.08
     })
 
