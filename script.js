@@ -384,7 +384,8 @@ function animate() {
   var MIN_DISTANCE = 6;
   const speed = 0.005;
 
-  for (let i = 0; i < test; i++) {
+  
+  /*for (let i = 0; i < test; i++) {
     if (scene.children[i].position.distanceTo(v0) >= MIN_DISTANCE && scene.children[i].name == "smallCube0") 
        scene.children[i].position.lerp(v0, speed);
     }
@@ -425,7 +426,7 @@ function animate() {
       scene.children[i].position.lerp(v7, speed);
     else if(scene.children[i].position.distanceTo(v7) <= 8 && scene.children[i].name == "smallCube7") 
       scene.children[i].position.lerp(v7, -speed);
-  }
+  }*/
    
   controls.update();
   //resetMaterials();
