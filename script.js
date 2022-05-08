@@ -20,13 +20,15 @@ var nearToPivotPoint = 1; //Info: The higher the closer //5 is very far away, 20
 console.log(nearToPivotPoint);
 
 // RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
-Promise.all([
-  d3.json(scripKeywords),
-  d3.json(scriptCategories),
-]).then(function (data) {
-  init(data);
-  animate(renderer, scene, camera, controls);
-});
+document.addEventListener('DOMContentLoaded', () => {
+  Promise.all([
+    d3.json(scripKeywords),
+    d3.json(scriptCategories),
+  ]).then(function (data) {
+    init(data);
+    animate(renderer, scene, camera, controls);
+  });
+}, false);
 
 // 🎛 RENDER SETTINGS -------------------------- 
 
@@ -174,36 +176,10 @@ class categoryCube {
     //BOX WITH SHARP EDGES
     this.geometry = new THREE.BoxBufferGeometry(size, size, size);
 
-    //BOX WITH ROUND EDGES
-
-    /*let shape = new THREE.Shape();
-    let eps = 0.01;
-    let radius = 0.1;
-    let radius0 = 0.1;
-    let height = size;
-    let width = size;
-    let depth = size;
-    let smoothness = 3;
-    shape.absarc(eps, eps, eps, -Math.PI / 2, -Math.PI, true);
-    shape.absarc(eps, height - radius * 2, eps, Math.PI, Math.PI / 2, true);
-    shape.absarc(width - radius * 2, height - radius * 2, eps, Math.PI / 2, 0, true);
-    shape.absarc(width - radius * 2, eps, eps, 0, -Math.PI / 2, true);
-    this.geometry = new THREE.ExtrudeBufferGeometry(shape, {
-      amount: depth - radius0 * 2,
-      bevelEnabled: true,
-      bevelSegments: smoothness * 2,
-      steps: 1,
-      bevelSize: radius,
-      bevelThickness: radius0,
-      curveSegments: smoothness
-    });*/
-
     // MATERIAL AND TEXTURE
 
-    
-
     this.categoryString = _categoryText;
-    this.dynamicTexture = new THREEx.DynamicTexture(400, 400)
+    this.dynamicTexture = new THREEx.DynamicTexture(250, 250, THREE)
     
     this.dynamicTexture.drawTextCooked({
       margin: 0.08,
@@ -213,7 +189,7 @@ class categoryCube {
       //emissive: 100,
       blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "35px FKGroteskRegular",
+      font: "18px FKGroteskRegular",
       marginTop: 0.05
     })
 
@@ -245,35 +221,10 @@ class Cube {
     //BOX WITH SHARP EDGES
     this.geometry = new THREE.BoxGeometry(size, size, size);
 
-    //BOX WITH ROUND EDGES
-
-    let shape = new THREE.Shape();
-    
-    /*let eps = 0.00001;
-    let radius = 0.03;
-    let radius0 = 0.03;
-    let height = size;
-    let width = size;
-    let depth = size;
-    let smoothness = 3;
-    shape.absarc(eps, eps, eps, -Math.PI / 2, -Math.PI, true);
-    shape.absarc(eps, height - radius * 2, eps, Math.PI, Math.PI / 2, true);
-    shape.absarc(width - radius * 2, height - radius * 2, eps, Math.PI / 2, 0, true);
-    shape.absarc(width - radius * 2, eps, eps, 0, -Math.PI / 2, true);
-    this.geometry = new THREE.ExtrudeBufferGeometry(shape, {
-      amount: depth - radius0 * 2,
-      bevelEnabled: true,
-      bevelSegments: smoothness * 2,
-      steps: 1,
-      bevelSize: radius,
-      bevelThickness: radius0,
-      curveSegments: smoothness
-    });*/
-
     //MATERIAL AND TEXTURE
 
     this.keywordString = _keywordString;
-    this.dynamicTexture = new THREEx.DynamicTexture(400, 400);
+    this.dynamicTexture = new THREEx.DynamicTexture(250, 250, THREE);
 
     this.dynamicTexture.drawTextCooked({
       margin: 0.1,
@@ -283,7 +234,7 @@ class Cube {
       //emissive: 100,
       //blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "45px FKGroteskRegular",
+      font: "20px FKGroteskRegular",
       marginTop: 0.08
     })
 
@@ -293,50 +244,6 @@ class Cube {
       //emissive: "rgb(90,255,6)",
       map: this.dynamicTexture.texture,
     })
-
-    /*this.material = new THREE.MeshPhysicalMaterial({
-      color: CubeColor, 
-      roughness: 0.2,  
-      transmission: 1,  
-      thickness: 0.2,
-      emissiveIntensity: 7,
-      emissive: new THREE.Color(EmissiveColor),
-    })*/
-    /*
-    this.material = [
-      new THREE.MeshPhongMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-        emissiveMap: this.dynamicTexture.texture,
-      }),
-      new THREE.MeshPhongMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-        emissiveMap: this.dynamicTexture.texture,
-      }),
-      new THREE.MeshStandardMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-      }),
-      new THREE.MeshPhongMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-      }),
-      new THREE.MeshPhongMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-      }),
-      new THREE.MeshPhongMaterial({
-        emissiveIntensity: emissiveIntensityvalue,
-        color: new THREE.Color(CubeColor),
-        emissive: new THREE.Color(EmissiveColor),
-      })
-    ]; */
 
     // MESH, MESH NAME AND IT'S POSITIONING
 
@@ -470,18 +377,18 @@ const v5 = new THREE.Vector3(-6,6,12);
 const v6 = new THREE.Vector3(7,-17,-6);
 const v7 = new THREE.Vector3(-25,2,7);
 
-
 function animate() {
 
   let test = scene.children.length;
 
   var MIN_DISTANCE = 6;
   const speed = 0.005;
-/*
+
   for (let i = 0; i < test; i++) {
     if (scene.children[i].position.distanceTo(v0) >= MIN_DISTANCE && scene.children[i].name == "smallCube0") 
        scene.children[i].position.lerp(v0, speed);
     }
+  
   
   for (let i = 0; i <test; i++) {
     if (scene.children[i].position.distanceTo(v1) > MIN_DISTANCE && scene.children[i].name == "smallCube1") 
@@ -518,7 +425,7 @@ function animate() {
       scene.children[i].position.lerp(v7, speed);
     else if(scene.children[i].position.distanceTo(v7) <= 8 && scene.children[i].name == "smallCube7") 
       scene.children[i].position.lerp(v7, -speed);
-  }*/
+  }
    
   controls.update();
   //resetMaterials();

@@ -10,7 +10,7 @@ var THREEx	= THREEx	|| {}
  * @param {Number} width  width of the canvas
  * @param {Number} height height of the canvas
  */
-THREEx.DynamicTexture	= function(width, height){
+THREEx.DynamicTexture	= function(width, height, THREE){
 	var canvas	= document.createElement( 'canvas' )
 	canvas.width	= width
 	canvas.height	= height
@@ -94,6 +94,7 @@ THREEx.DynamicTexture.prototype.drawTextCooked = function(options){
 	console.assert(typeof(text) === 'string')
 
 	// context.save()
+	console.log(context);
 
   context.fillStyle = options.background;
   context.fillRect(0, 0, canvas.width, canvas.height);
