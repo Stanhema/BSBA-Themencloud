@@ -203,17 +203,17 @@ class categoryCube {
     
 
     this.categoryString = _categoryText;
-    this.dynamicTexture = new THREEx.DynamicTexture(600, 600)
+    this.dynamicTexture = new THREEx.DynamicTexture(400, 400)
     
     this.dynamicTexture.drawTextCooked({
       margin: 0.08,
-      background: "rgb(215,254,26)",  //Here is the Color of the
+      background: "#D7FE1A",  //Here is the Color of the
       text: this.categoryString,
       lineHeight: 0.12,
       //emissive: 100,
       blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "56px FKGroteskRegular",
+      font: "35px FKGroteskRegular",
       marginTop: 0.05
     })
 
@@ -273,17 +273,17 @@ class Cube {
     //MATERIAL AND TEXTURE
 
     this.keywordString = _keywordString;
-    this.dynamicTexture = new THREEx.DynamicTexture(1000, 1000);
+    this.dynamicTexture = new THREEx.DynamicTexture(400, 400);
 
     this.dynamicTexture.drawTextCooked({
       margin: 0.1,
-      background: "rgb(215,254,26)", 
+      background: "#D7FE1A", 
       text: this.keywordString,
       lineHeight: 0.12,
       //emissive: 100,
       //blending: THREE.AdditiveBlending,
       fillStyle: "black",
-      font: "110px FKGroteskRegular",
+      font: "45px FKGroteskRegular",
       marginTop: 0.08
     })
 

@@ -93,7 +93,7 @@ THREEx.DynamicTexture.prototype.drawTextCooked = function(options){
 	// sanity check
 	console.assert(typeof(text) === 'string')
 
-	//context.save()
+	// context.save()
 
   context.fillStyle = options.background;
   context.fillRect(0, 0, canvas.width, canvas.height);
