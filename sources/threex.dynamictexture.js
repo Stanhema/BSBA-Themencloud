@@ -19,7 +19,9 @@ THREEx.DynamicTexture	= function(width, height, THREE){
 	var context	= canvas.getContext( '2d' )
 	this.context	= context
 
-	var texture	= new THREE.Texture(canvas)
+	var texture	= new THREE.CanvasTexture(canvas)
+	texture.minFilter = THREE.LinearMipmapLinearFilter;
+
 	this.texture	= texture
 }
 
@@ -91,7 +93,7 @@ THREEx.DynamicTexture.prototype.drawTextCooked = function(options){
 	}
   
 	// sanity check
-	console.assert(typeof(text) === 'string')
+	//console.assert(typeof(text) === 'string')
 
 	// context.save()
 	console.log(context);
@@ -131,7 +133,9 @@ THREEx.DynamicTexture.prototype.drawTextCooked = function(options){
 	context.restore()
 
 	// make the texture as .needsUpdate
+	
 	this.texture.needsUpdate	= true;
+	
 	// for chained API
 	return this;
 

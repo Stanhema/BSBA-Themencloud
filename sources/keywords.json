@@ -1,7 +1,7 @@
 {
 "article": [
  {
-  "Stichwort": 2050,
+  "Stichwort": "2050",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": "x",
@@ -67,7 +67,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Armuts- bekämpfung",
+  "Stichwort": "Armutsbekämpfung",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -111,7 +111,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Basis- innovationen",
+  "Stichwort": "Basisinnovationen",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -342,7 +342,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Cross- Impact- Analysis",
+  "Stichwort": "Cross-Impact- Analysis",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -463,7 +463,7 @@
   "Nachhaltigkeitsinnovationen": "x"
  },
  {
-  "Stichwort": "Effizienz- steigerung ",
+  "Stichwort": "Effizienzsteigerung ",
   "Digitalisierung": "x",
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -650,7 +650,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Flächenin- anspruchnahme",
+  "Stichwort": "Flächeninanspruch- nahme",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -661,7 +661,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Flächen- recycling",
+  "Stichwort": "Flächenrecycling",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -683,7 +683,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Freiflächen- verlust",
+  "Stichwort": "Freiflächenverlust",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -694,7 +694,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Gebäudeleit- technik (GLT)",
+  "Stichwort": "Gebäudeleittechnik (GLT)",
   "Digitalisierung": "x",
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -716,7 +716,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Gemeinsame Daten- umgebung ",
+  "Stichwort": "Gemeinsame Daten-umgebung ",
   "Digitalisierung": "x",
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -771,7 +771,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Gesicherte Grundver- sorgung",
+  "Stichwort": "Gesicherte Grundversorgung",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -804,7 +804,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Grünflächen (erschließen, aufwerten & vernetzten)",
+  "Stichwort": "Grünflächen",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -980,7 +980,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Innovations- erfolg",
+  "Stichwort": "Innovationserfolg",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1035,7 +1035,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Inter- und intragenera- tionellen Gerechtigkeit",
+  "Stichwort": "Inter- und intragenerationellen Gerechtigkeit",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1079,7 +1079,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Interoper- abilität ",
+  "Stichwort": "Interoperabilität ",
   "Digitalisierung": "x",
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1123,7 +1123,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Klimafreund- liche Materialien (Baustoffe\/ Dämmmaterial)",
+  "Stichwort": "Klimafreundliche Materialien",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1134,7 +1134,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Klimafreund- liche Mobilität",
+  "Stichwort": "Klimafreundliche Mobilität",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -1145,7 +1145,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Klimaneutraler Gebäude- bestand ",
+  "Stichwort": "Klimaneutraler Gebäudebestand ",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -1178,7 +1178,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Klimawandel- schutz",
+  "Stichwort": "Klimawandelschutz",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -1211,7 +1211,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Kompensator- ische Innovationen",
+  "Stichwort": "Kompensatorische Innovationen",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1233,7 +1233,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Kondratieff- Zyklen",
+  "Stichwort": "Kondratieff-Zyklen",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1299,7 +1299,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Kreislauf- wirtschaft",
+  "Stichwort": "Kreislaufwirtschaft",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -1343,7 +1343,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Künstliche Intelligenz (KI)",
+  "Stichwort": "Künstliche Intelligenz(KI)",
   "Digitalisierung": "x",
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1442,7 +1442,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Machbarkeits- analyse",
+  "Stichwort": "Machbarkeitsanalyse",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1541,7 +1541,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Möglichkeits- räume",
+  "Stichwort": "Möglichkeitsräume",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": "x",
@@ -1552,7 +1552,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Morpholo- gischer Kasten",
+  "Stichwort": "Morphologischer Kasten",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1563,7 +1563,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Nachhaltige Hochwasser- vorsorge",
+  "Stichwort": "Nachhaltige Hochwasservorsorge",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1618,7 +1618,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Neuigkeits- grad",
+  "Stichwort": "Neuigkeitsgrad",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1673,7 +1673,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Nutzungs- intensität",
+  "Stichwort": "Nutzungsintensität",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1728,7 +1728,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Open-source",
+  "Stichwort": "Open Source",
   "Digitalisierung": "x",
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -1761,7 +1761,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Pareto- superiore Innovation",
+  "Stichwort": "Pareto-superiore Innovation",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1783,7 +1783,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Pionier- datenbank",
+  "Stichwort": "Pionierdatenbank",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1827,7 +1827,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Prinzipal- Agent",
+  "Stichwort": "Prinzipal-Agent",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -1915,7 +1915,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Rebeauty - ästhetisch wertvolle Wiederverwen- dung",
+  "Stichwort": "Rebeauty – ästhetisch wertvolle Wiederverwendung",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2025,7 +2025,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Ressourcen- effizienz",
+  "Stichwort": "Ressourceneffizienz",
   "Digitalisierung": "x",
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2047,7 +2047,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Retentions- flächen",
+  "Stichwort": "Retentionsflächen",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2069,7 +2069,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Rohstoff- effizienz",
+  "Stichwort": "Rohstoffeffizienz",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2080,7 +2080,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Rohstoff- knappheit",
+  "Stichwort": "Rohstoffknappheit",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2091,7 +2091,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Rohstoff- suffizienz",
+  "Stichwort": "Rohstoffsuffizienz",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2190,7 +2190,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Selektions- prozesse",
+  "Stichwort": "Selektionsprozesse",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2212,7 +2212,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Siedlungs- dichte",
+  "Stichwort": "Siedlungsdichte",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2322,7 +2322,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Sozio-öko- nomische Transformation",
+  "Stichwort": "Sozio-ökonomische Transformation",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2355,7 +2355,7 @@
   "Nachhaltigkeitsinnovationen": "x"
  },
  {
-  "Stichwort": "Strukturauf- blähung",
+  "Stichwort": "Strukturaufblähung",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2454,7 +2454,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Transaktions- kosten",
+  "Stichwort": "Transaktionskosten",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2465,7 +2465,7 @@
   "Nachhaltigkeitsinnovationen": "x"
  },
  {
-  "Stichwort": "Transdiszipli- narität",
+  "Stichwort": "Transdisziplinarität",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": "x",
@@ -2685,7 +2685,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Wasserauf- bereitung",
+  "Stichwort": "Wasseraufbereitung",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2751,7 +2751,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Wissens- produktion",
+  "Stichwort": "Wissensproduktion",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": "x",
@@ -2762,7 +2762,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Wissens- transfer",
+  "Stichwort": "Wissenstransfer",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": "x",
@@ -2773,7 +2773,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Wohlfahrts- gewinne",
+  "Stichwort": "Wohlfahrtsgewinne",
   "Digitalisierung": null,
   "Stadtentwicklung": null,
   "Zukunftsforschung": null,
@@ -2817,7 +2817,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Zivilgesell- schaft ",
+  "Stichwort": "Zivilgesellschaft",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,
@@ -2828,7 +2828,7 @@
   "Nachhaltigkeitsinnovationen": null
  },
  {
-  "Stichwort": "Zukunfts- fähigkeit",
+  "Stichwort": "Zukunftsfähigkeit",
   "Digitalisierung": null,
   "Stadtentwicklung": "x",
   "Zukunftsforschung": null,

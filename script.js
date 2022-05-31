@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 🎛 RENDER SETTINGS -------------------------- 
 
-renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
 renderer.setPixelRatio(window.devicePixelRatio / 1);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ReinhardToneMapping;
@@ -68,24 +68,16 @@ controls.update();
 
 // 🌞 LIGHT SETTINGS -------------------------- 
 
-const skyColor = 0xffffff;
-const groundColor = 0x000000;
-const hemiIntensity = 4;
-const hemiLight = new THREE.HemisphereLight(skyColor, groundColor, hemiIntensity);
-hemiLight.position.set(17, 50, 17);
-//scene.add(hemiLight);
-
 const ambiColor = 0x40ff40;
 const ambiIntensity = 5;
 const ambiLight = new THREE.AmbientLight(ambiColor, ambiIntensity);
 scene.add(ambiLight);
 
-
 //DIR LIGHT 1
 const light1 = new THREE.DirectionalLight(0xffffff, 2.5);
 light1.position.set(17, 30, -50);
 scene.add(light1);
-//+HELPER
+//DIR LIGHT 1 HELPER
 const helper1 = new THREE.DirectionalLightHelper( light1, 5 );
 //scene.add( helper1 );
 
@@ -93,7 +85,7 @@ const helper1 = new THREE.DirectionalLightHelper( light1, 5 );
 const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
 light2.position.set(-50, 30, 17);
 scene.add(light2);
-//+HELPER
+//DIR LIGHT 2 HELPER
 const helper2 = new THREE.DirectionalLightHelper( light2, 5 );
 //scene.add( helper2 );
 
@@ -159,8 +151,6 @@ function init(data) {
   generate_cloud(category, keyWordList, keyWordLengthList);
 
   window.addEventListener( 'resize', onWindowResize );
-  //document.addEventListener( 'click', onClick, false ); 
-  //helper(); // Koordinatensystem  
 }
 
 // CLASS FOR CATEGORY CUBE
@@ -169,38 +159,40 @@ class categoryCube {
 
   constructor(_categoryText,  categoryCubeXPos, categoryCubeYPos, categoryCubeZPos) {
 
-    // GEOMETRY 
-
+    //GEOMETRY
     let size = 5;
-
-    //BOX WITH SHARP EDGES
     this.geometry = new THREE.BoxBufferGeometry(size, size, size);
 
     // MATERIAL AND TEXTURE
 
     this.categoryString = _categoryText;
-    this.dynamicTexture = new THREEx.DynamicTexture(250, 250, THREE)
+    let dynamicTexture = new THREEx.DynamicTexture(900, 300, THREE)
     
-    this.dynamicTexture.drawTextCooked({
+    dynamicTexture.drawTextCooked({
       margin: 0.08,
       background: "#D7FE1A",  //Here is the Color of the
       text: this.categoryString,
-      lineHeight: 0.12,
-      //emissive: 100,
-      blending: THREE.AdditiveBlending,
+      lineHeight: 0.28,
       fillStyle: "black",
-      font: "22px FKGroteskRegular",
-      marginTop: 0.05
+      font: "80px FKGroteskRegular",
+      marginTop: 0.15,
+      flatShading: true
     })
 
+    //Remove Texture Canvas to save GPU memory
+    dynamicTexture.texture.onUpdate = () => dynamicTexture.canvas.remove();
+    dynamicTexture.texture.onUpdate = () => console.log("updated");
+
+    //UV Mapping
+    dynamicTexture.texture.magFilter = THREE.LinearFilter;
+    dynamicTexture.texture.minFilter = THREE.LinearMipMapLinearFilter;
+    dynamicTexture.texture.offset.y = -1.9;
+    dynamicTexture.texture.repeat.y = 3;
+
     this.material =  new THREE.MeshPhongMaterial({
-        //color: "rgb(100,0,0)",
-        //emissiveIntensity: 8,
-        //emissive: "rgb(90,255,6)",
-        map: this.dynamicTexture.texture,
+       map: dynamicTexture.texture,
     }),
     
-
     // MESH, NAME OF THE MESH, AND IT'S POSITIONING
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.name = "categoryCube";
@@ -217,37 +209,38 @@ class Cube {
 
     //GEOMETRY
     let size = 2;
-
-    //BOX WITH SHARP EDGES
-    this.geometry = new THREE.BoxGeometry(size, size, size);
+    this.geometry = new THREE.BoxBufferGeometry(size, size, size);
 
     //MATERIAL AND TEXTURE
 
     this.keywordString = _keywordString;
-    this.dynamicTexture = new THREEx.DynamicTexture(250, 250, THREE);
+    let dynamicTexture = new THREEx.DynamicTexture(600, 200, THREE);
 
-    this.dynamicTexture.drawTextCooked({
+    dynamicTexture.drawTextCooked({
       margin: 0.1,
       background: "#D7FE1A", 
       text: this.keywordString,
-      lineHeight: 0.12,
-      //emissive: 100,
-      //blending: THREE.AdditiveBlending,
+      lineHeight: 0.25,
       fillStyle: "black",
-      font: "28px FKGroteskRegular",
-      marginTop: 0.08
+      font: "50px FKGroteskRegular",
+      marginTop: 0.15,
+      flatShading: true
     })
 
+    dynamicTexture.texture.onUpdate = () => dynamicTexture.canvas.remove();
+    setTimeout(() => dynamicTexture.canvas.remove(), 2000)
+
+    dynamicTexture.texture.offset.y = -1.9;
+    dynamicTexture.texture.repeat.y = 3;
+
     this.material = new THREE.MeshPhongMaterial({
-      //color: "rgb(0,0,0)",
-      //emissiveIntensity: 8,
-      //emissive: "rgb(90,255,6)",
-      map: this.dynamicTexture.texture,
+     map: dynamicTexture.texture,
     })
 
     // MESH, MESH NAME AND IT'S POSITIONING
-
+  
     this.mesh = new THREE.Mesh(this.geometry, this.material);
+
     scene.add(this.mesh); 
     this.mesh.name = "smallCube" + categoryNumber;
     console.log("It's name must be smallCube: " + this.mesh.name);
@@ -308,41 +301,6 @@ function generate_cloud(category, keyWordList, keyWordLengthList) {
     }
 }
 
-// HOVER AND FOCUS CUBE ANIMATION
-
-/*function resetMaterials(){
-
-  for (let i = 0; i < scene.children.length; i++) {
-    document.body.style.cursor = "url(sources/PointerCube.png), auto";
-      if (scene.children[i].material) {
-        scene.children[i].material.color.set( 0x002200 );
-      }
-  };
-}  
-
-function hoverCubes(nearToPivotPoint){
-
-  raycaster.setFromCamera(pointer, camera);
-  var intersects = raycaster.intersectObjects(scene.children);
-  
-  for (let i = 0; i < intersects.length; i++) {
-    intersects[i].object.material.color.set( 0x000000 );
-    //document.body.style.cursor = "url(sources/PointerArrow.png), auto";
-  }
-}
-
-function onPointerMove( event ) {
-
-	// calculate pointer position in normalized device coordinates
-	// (-1 to +1) for both components
-
-	pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-}*/
-
-//window.addEventListener( 'pointermove', onPointerMove, false);
-
 function onClick( event ) {
 
   event.preventDefault();
@@ -383,58 +341,10 @@ function animate() {
 
   var MIN_DISTANCE = 6;
   const speed = 0.005;
-
-  
-  /*for (let i = 0; i < test; i++) {
-    if (scene.children[i].position.distanceTo(v0) >= MIN_DISTANCE && scene.children[i].name == "smallCube0") 
-       scene.children[i].position.lerp(v0, speed);
-    }
-  
-  
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v1) > MIN_DISTANCE && scene.children[i].name == "smallCube1") 
-      scene.children[i].position.lerp(v1, speed);
-    }
-
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v2) > MIN_DISTANCE && scene.children[i].name == "smallCube2") 
-      scene.children[i].position.lerp(v2, speed);
-    }
-
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v3) > MIN_DISTANCE && scene.children[i].name == "smallCube3") 
-      scene.children[i].position.lerp(v3, speed);
-    }
-
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v4) > MIN_DISTANCE && scene.children[i].name == "smallCube4") 
-      scene.children[i].position.lerp(v4, speed);
-    }
-
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v5) > MIN_DISTANCE && scene.children[i].name == "smallCube5") 
-      scene.children[i].position.lerp(v5, speed);
-    }
-  
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v6) > MIN_DISTANCE && scene.children[i].name == "smallCube6") 
-      scene.children[i].position.lerp(v6, speed);
-    }
-  
-  for (let i = 0; i <test; i++) {
-    if (scene.children[i].position.distanceTo(v7) >= MIN_DISTANCE && scene.children[i].name == "smallCube7") 
-      scene.children[i].position.lerp(v7, speed);
-    else if(scene.children[i].position.distanceTo(v7) <= 8 && scene.children[i].name == "smallCube7") 
-      scene.children[i].position.lerp(v7, -speed);
-  }*/
    
   controls.update();
-  //resetMaterials();
-  //hoverCubes();
-  //onClick();
   renderer.render(scene, camera);
 
- 
   // BUTTONS 
   document.getElementById("start").onclick = function () {
     document.getElementById("explore").style.display = "none";
@@ -450,11 +360,8 @@ function onWindowResize() {
 
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-
   renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
-
 
 // 🔶 ORIENTATION CUBES FOR AXES -------------------------- 
 
@@ -484,4 +391,3 @@ function helper() {
   var arrowHelper = new THREE.ArrowHelper(dir, origin, length, hex);
   scene.add(arrowHelper);
 }
-
