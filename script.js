@@ -7,12 +7,12 @@ import { OrbitControls } from './sources/OrbitControls.js';
 
 let scene, renderer, camera, controls, pointer, raycaster;
 
-// SCRIPTSOURCES
+// SCRIPTSOURCES 
 
 let scripKeywords = './sources/keywords.json';
 let scriptCategories = './sources/categories.json';
 
-// INTERACTION
+// INTERACTION!
 pointer = new THREE.Vector2();
 raycaster = new THREE.Raycaster();
 
