@@ -9,8 +9,8 @@ let scene, renderer, camera, controls, pointer, raycaster;
 
 // SCRIPTSOURCES 
 
-let scripKeywords = '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/keywords.json';
-let scriptCategories = '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/categories.json';
+let scriptKeywords = './sources/keywords.json';
+let scriptCategories = './sources/categories.json';
 
 // INTERACTION!
 pointer = new THREE.Vector2();
@@ -22,7 +22,7 @@ console.log(nearToPivotPoint);
 // RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    d3.json(scripKeywords),
+    d3.json(scriptKeywords),
     d3.json(scriptCategories),
   ]).then(function (data) {
     init(data);
