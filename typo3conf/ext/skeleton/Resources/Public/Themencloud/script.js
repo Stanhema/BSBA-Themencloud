@@ -180,7 +180,6 @@ class categoryCube {
 
     //Remove Texture Canvas to save GPU memory
     dynamicTexture.texture.onUpdate = () => dynamicTexture.canvas.remove();
-    dynamicTexture.texture.onUpdate = () => console.log("updated");
 
     //UV Mapping
     dynamicTexture.texture.magFilter = THREE.LinearFilter;
@@ -195,7 +194,6 @@ class categoryCube {
     // MESH, NAME OF THE MESH, AND IT'S POSITIONING
     this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.name = "categoryCube";
-    console.log("It's name must be categoryCube: " + this.mesh.name);
     this.mesh.position.set( categoryCubeXPos,categoryCubeYPos,categoryCubeZPos);
   }
 }
@@ -242,7 +240,6 @@ class Cube {
 
     scene.add(this.mesh); 
     this.mesh.name = "smallCube" + categoryNumber;
-    console.log("It's name must be smallCube: " + this.mesh.name);
 
     this.mesh.position.x = randomCategoryCubeXPos;
     this.mesh.position.y = randomCategoryCubeYPos;
@@ -310,12 +307,9 @@ function onClick( event ) {
   raycaster.setFromCamera(pointer, camera);
   var intersectss = raycaster.intersectObjects(scene.children);
 
-  console.log( 'click' );
-
   nearToPivotPoint = nearToPivotPoint*2;
   
   for (let i = 0; i < intersectss.length; i++) {
-    console.log( 'click on intersects' );
     //intersectss[i].object.position.x = 10;
     intersectss[i].object.material.emissiveIntensity = 40;
   }
