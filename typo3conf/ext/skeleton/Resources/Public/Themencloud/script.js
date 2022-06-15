@@ -9,15 +9,14 @@ let scene, renderer, camera, controls, pointer, raycaster;
 
 // SCRIPTSOURCES 
 
-let scriptKeywords = './sources/keywords.json';
-let scriptCategories = './sources/categories.json';
+let scriptKeywords = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/keywords.json';
+let scriptCategories = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/categories.json';
 
 // INTERACTION!
 pointer = new THREE.Vector2();
 raycaster = new THREE.Raycaster();
 
 var nearToPivotPoint = 1; //Info: The higher the closer //5 is very far away, 20 is very close
-console.log(nearToPivotPoint);
 
 // RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
 document.addEventListener('DOMContentLoaded', () => {

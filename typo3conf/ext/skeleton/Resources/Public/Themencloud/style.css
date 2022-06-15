@@ -1,11 +1,11 @@
 @font-face {
   font-family: FKGroteskRegular;
-  src: url(/typo3conf/ext/skeleton/Resources/Public/assets/fonts/FKGrotesk-Regular.woff2);
+  src: url(../assets/fonts/FKGrotesk-Regular.woff2);
   }
 
 @font-face {
   font-family: FKGrotesk-Thin;
-  src: url(/typo3conf/ext/skeleton/Resources/Public/assets/fonts/FKGrotesk-Thin.woff2);
+  src: url(../assets/fonts/FKGrotesk-Thin.woff2);
   }
 
 body {
