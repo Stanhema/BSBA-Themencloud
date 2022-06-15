@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="icon" type="image/png" href="./sources/favicon.png" sizes="96x96">
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 		<title>Bauakademie – Themencloud</title>
+
+		<!--<style media="all" data-href="./typo3conf/ext/skeleton/Resources/Public/assets/css/styles.css"></style> -->
+		<link rel="stylesheet" type="text/css" href="./typo3conf/ext/skeleton/Resources/Public/assets/css/styles.css">
 	</head>
 
 	<body>
-		
-		<link rel="stylesheet" type="text/css" href="./style.css">
-		<script src="./sources/d3.min.js"></script>
-		<!--script src='./sources/three.min.js'></script-->
-		<script src='./sources/threex.dynamictexture.js'></script>
-		
+	
 		<main>
 			<div class="container container-text bg-default"> 
 				<div class="row">
@@ -22,14 +19,27 @@
 							<div class="row">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="cloudcanvas" name="cloudcanvas">
-										<script type="module" src="./script.js"></script>
+										<meta http-quiv="content-type" content="text/html; charset=UTF-8">
+										<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+										<style media data-href="./typo3conf/ext/skeleton/Resources/Public/Themencloud/style.css"></style>
+										<script scr="./typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/d3.min.js"></script>
+										<!--script src='./sources/three.min.js'></script>-->
+										<script scr="./typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/threex.dynamictexture.js"></script>
+										<script type="module" src="./typo3conf/ext/skeleton/Resources/Public/Themencloud/script.js"></script>
 										<div class="visible-by-click" id="explore">
 											<div class="backgroundbox"></div>
 											<div class="textbox">
-												<h1>Erforsche den digitalen Raum der Zukunft.</h1>
+												<h1>Digitaler Raum der Zukunft (Beta-Version)</h1>
 												<button id="start" type="button" onClick="start();" class="button-white">Scrolle durch die Themenwelt!</button>
 											</div>
 										</div>
+										<div class="exit-by-click" id="exit" style="display: none">
+											<div class="textbox">
+												<button id="stop" type="button" onclick="stop();" class="button-white">Schließen
+												</button>
+											</div>
+										</div>
+										<canvas data-engine="three.js r139" width="2373" height="2224" style="display: block; width: 863px; height: 809px; touch-action: none;">
 									</div>
 								</div>
 							</div>

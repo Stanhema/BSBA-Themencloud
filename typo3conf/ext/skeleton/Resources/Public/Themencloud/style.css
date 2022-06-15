@@ -1,12 +1,4 @@
-@font-face {
-  font-family: FKGroteskRegular;
-  src: url(./sources/FK_Grotesk_woff2/FKGrotesk-Regular.woff2);
-  }
 
-@font-face {
-  font-family: FKGrotesk-Thin;
-  src: url(./sources/FK_Grotesk_woff2/FKGrotesk-Thin.woff2);
-  }
 
 body {
   width: 100vw;
