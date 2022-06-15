@@ -1,8 +1,7 @@
 // 📀 LOAD THREE JS -------------------------- 
 
-import * as THREE from '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/three.module.js';
-import * as d3 from '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/d3.min.js';
-import { OrbitControls } from '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/OrbitControls.js';
+import * as THREE from './sources/three.module.js';
+import { OrbitControls } from './sources/OrbitControls.js';
 
 // 🌐 GLOBAL VARIABLES -------------------------- 
 
@@ -10,19 +9,20 @@ let scene, renderer, camera, controls, pointer, raycaster;
 
 // SCRIPTSOURCES 
 
-let scriptKeywords = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/keywords.json';
-let scriptCategories = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/categories.json';
+let scripKeywords = '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/keywords.json';
+let scriptCategories = '/typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/categories.json';
 
 // INTERACTION!
 pointer = new THREE.Vector2();
 raycaster = new THREE.Raycaster();
 
 var nearToPivotPoint = 1; //Info: The higher the closer //5 is very far away, 20 is very close
+console.log(nearToPivotPoint);
 
 // RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    d3.json(scriptKeywords),
+    d3.json(scripKeywords),
     d3.json(scriptCategories),
   ]).then(function (data) {
     init(data);
