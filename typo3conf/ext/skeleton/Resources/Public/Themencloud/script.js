@@ -338,11 +338,17 @@ function animate() {
   controls.update();
   renderer.render(scene, camera);
 
-  // BUTTONS 
+  // BUTTONS
   document.getElementById("start").onclick = function () {
-    document.getElementById("explore").style.display = "none";
+  document.getElementById("explore").style.display = "none";
+  document.getElementById("exit").style.display = "flex";
   };
 
+  document.getElementById("stop").onclick = function () {
+  document.getElementById("explore").style.display = "flex";
+  document.getElementById("exit").style.display = "none";
+  };
+  
   window.requestAnimationFrame(animate);
 
 }

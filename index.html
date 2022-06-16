@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 	<script async="" src="//bundesstiftung-bauakademie.de/matomo/matomo.js"></script>
+	<script>
+		(() => {
+		/**
+		 * This script injected by the installed three.js developer
+		 * tools extension.
+		 * https://github.com/threejs/three-devtools
+		 */
+		
+		const $devtoolsReady = Symbol('devtoolsReady');
+		const $backlog = Symbol('backlog');
+		
+		// The __THREE_DEVTOOLS__ target is small and light-weight, and collects
+		// events triggered until the devtools panel is ready, which is when
+		// the events are flushed.
+		const target = new class ThreeDevToolsTarget extends EventTarget {
+		  constructor() {
+			super();
+			this[$devtoolsReady] = false;
+			this[$backlog] = [];
+			this.addEventListener('devtools-ready', e => {
+			  this[$devtoolsReady] = true;
+			  for (let event of this[$backlog]) {
+				this.dispatchEvent(event);
+			  }
+			}, { once: true });
+		  }
+		
+		  dispatchEvent(event) {
+			if (this[$devtoolsReady] || event.type === 'devtools-ready') {
+			  super.dispatchEvent(event);
+			} else {
+			  this[$backlog].push(event);
+			}
+		  }
+		}
+		
+		Object.defineProperty(window, '__THREE_DEVTOOLS__', {
+		  value: target,
+		});
+		})();
+		</script>
 	
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
 		<title>Bauakademie – Themencloud</title>
 
-		<!--<link rel="stylesheet" type="text/css" href="./typo3conf/ext/skeleton/Resources/Public/assets/css/styles.css">--> 
-		<link rel="stylesheet" type="text/css" href="./typo3conf/ext/skeleton/Resources/Public/Themencloud/style.css">
+		<link rel="stylesheet" type="text/css" href="./typo3conf/ext/skeleton/Resources/Public/assets/css/styles.css">
 	</head>
 
 	<body>
@@ -23,10 +63,106 @@
 									<div class="cloudcanvas" name="cloudcanvas">
 										<meta http-quiv="content-type" content="text/html; charset=UTF-8">
 										<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+
+										<style media="" data-href="./typo3conf/ext/skeleton/Resources/Public/Themencloud/style.css">
+										@font-face {
+										font-family: FKGroteskRegular;
+										src: url(./typo3conf/ext/skeleton/Resources/Public/assets/fonts/FKGrotesk-Regular.woff2);
+										}
+
+										@font-face {
+										font-family: FKGrotesk-Thin;
+										src: url(./typo3conf/ext/skeleton/Resources/Public/assets/fonts/FKGrotesk-Thin.woff2);
+										}
+
+										@media only screen and (max-width: 900px) {
+											.cloudcanvas h1 {
+												font-size: 60px;
+												line-height: 50px;
+											}
+										  }
+										  
+										  @media only screen and (min-width: 900px) {
+											.cloudcanvas .textbox {
+											  width: 34%;
+											}
+										  }
+										  
+										  .cloudcanvas a {
+											font-family: "FKGroteskRegular", sans-serif;
+											text-decoration: none;
+										  }
+										  
+										  .cloudcanvas .button-white {
+											font-family: "FKGroteskRegular", sans-serif;
+											border-radius: 10px;
+											font-weight: 400;
+											font-size: 14px;
+											background-color: black;
+											border-style: none;
+											padding: 5px 12px 5px 12px;
+											color: white;
+											transition: 0.3s;
+											margin-top: 30px;
+											margin-bottom: 30px;
+											box-shadow: 1px 1px 6px 1px rgba(25, 35, 44, 0.4);
+											}
+										  
+										  .cloudcanvas button:hover {
+											cursor: pointer;
+											background-color: white;
+											color: black;
+											}
+										  
+										  .cloudcanvas .visible-by-click {
+											position: absolute;
+											display: flex;
+											justify-content: center;
+											align-content: center;
+											align-items: center;
+											height: 100%;
+											width: 100%;
+											}
+										  .cloudcanvas .exit-by-click {
+											position: absolute;
+											display: flex;
+											justify-content: center;
+											align-content: center;
+											align-items: center;
+											width: 100%;
+											top: 70%;
+										  }
+										  
+										  .cloudcanvas .textbox {
+											padding: 5px;
+											color: #293645;
+											text-align: center;
+										  }
+										  
+										  .cloudcanvas canvas {
+											width: 100% !important;
+											height: auto !important;
+										  }
+										  
+										  </style>
 										
 										<script src="./typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/d3.min.js"></script>
 										<script src="./typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/threex.dynamictexture.js"></script>
 										<script type="module" src="./typo3conf/ext/skeleton/Resources/Public/Themencloud/script.js"></script>
+
+										<script>
+// BUTTONS
+document.getElementById("start").onclick = function () {
+  document.getElementById("explore").style.display = "none";
+  document.getElementById("exit").style.display = "flex";
+};
+
+document.getElementById("stop").onclick = function () {
+  document.getElementById("explore").style.display = "flex";
+  document.getElementById("exit").style.display = "none";
+};
+
+										</script>
 
 										<div class="visible-by-click" id="explore">
 											<div class="backgroundbox"></div>
@@ -41,7 +177,7 @@
 												</button>
 											</div>
 										</div>
-										<!--<canvas data-engine="three.js r139" width="2373" height="2224" style="display: block; width: 863px; height: 809px; touch-action: none;">-->
+										
 									</div>
 								</div>
 							</div>
@@ -50,5 +186,20 @@
 				</div>
 			</div>
 		</main>
+		
+		<footer>
+			<script src="./typo3conf/ext/skeleton/Resources/Public/assets/js/jquery-3.3.1.min.js"></script>
+			<script src="./typo3conf/ext/skeleton/Resources/Public/assets/js/jquery-ui.min.js"></script>
+			<script src="/typo3conf/ext/skeleton/Resources/Public/assets/js/jquery.easing.1.3.js"></script>
+			<script src="/typo3conf/ext/skeleton/Resources/Public/assets/js/prefixfree.min.js"></script>
+			<script src="./typo3conf/ext/skeleton/Resources/Public/assets/js/slick.min.js"></script>
+			<script src="./typo3conf/ext/skeleton/Resources/Public/assets/js/functions.js"></script>
+			<script src="/typo3conf/ext/skeleton/Resources/Public/assets/js/isotope.pkgd.min.js"></script>
+			<script src="/typo3conf/ext/skeleton/Resources/Public/assets/js/jquery.scroll-sprite.js"></script>
+			<script src="/typo3conf/ext/skeleton/Resources/Public/assets/js/spriteControl.js"></script>
+			<script src="/typo3conf/ext/rx_shariff/Resources/Public/JavaScript/shariff.complete.js"></script>
+
+		</footer>
+	
 	</body>
 </html>
