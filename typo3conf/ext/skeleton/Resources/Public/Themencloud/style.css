@@ -1,37 +1,26 @@
 @font-face {
   font-family: FKGroteskRegular;
   src: url(../assets/fonts/FKGrotesk-Regular.woff2);
-  }
+}
 
 @font-face {
   font-family: FKGrotesk-Thin;
   src: url(../assets/fonts/FKGrotesk-Thin.woff2);
-  }
-
-body {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-	margin: 0;
-	padding: 0;
-  overflow: hidden;
-	}
+}
 
 h1 {
   font-family: "FKGrotesk-Thin", sans-serif;
   font-size: 120px;
   line-height: 110px;
   color: black;
-  }
+}
 
 @media only screen and (max-width: 900px) {
-    h1 {
-      font-size: 60px;
-      line-height: 50px;
-    }
+  h1 {
+    font-size: 60px;
+    line-height: 50px;
   }
+}
 
 a {
   font-family: "FKGroteskRegular", sans-serif;
@@ -44,20 +33,20 @@ a {
   font-weight: 400;
   font-size: 14px;
   background-color: black;
-  border-style: none; 
-  padding: 5px 12px 5px 12px; 
+  border-style: none;
+  padding: 5px 12px 5px 12px;
   color: white;
   transition: 0.3s;
   margin-top: 30px;
   margin-bottom: 30px;
   box-shadow: 1px 1px 6px 1px rgba(25, 35, 44, 0.4);
-  }
+}
 
-button:hover { 
+button:hover {
   cursor: pointer;
   background-color: white;
   color: black;
-  }
+}
 
 .visible-by-click {
   position: fixed;
@@ -67,11 +56,87 @@ button:hover {
   justify-content: center;
   align-content: center;
   align-items: center;
-  }
+}
 
 .textbox {
   width: 55%;
   padding: 5px;
   color: #293645;
   text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .cloudcanvas h1 {
+    font-size: 60px;
+    line-height: 50px;
   }
+}
+
+@media only screen and (min-width: 900px) {
+  .cloudcanvas .textbox {
+    width: 34%;
+  }
+}
+
+.cloudcanvas a {
+  font-family: "FKGroteskRegular", sans-serif;
+  text-decoration: none;
+}
+
+.cloudcanvas .button-white {
+  font-family: "FKGroteskRegular", sans-serif;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: black;
+  border-style: none;
+  padding: 5px 12px 5px 12px;
+  color: white;
+  transition: 0.3s;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 6px 1px rgba(25, 35, 44, 0.4);
+}
+
+.cloudcanvas button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.cloudcanvas .visible-by-click {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.cloudcanvas .exit-by-click {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  top: 70%;
+}
+
+.cloudcanvas .textbox {
+  padding: 5px;
+  color: #293645;
+  text-align: center;
+}
+
+.cloudcanvas canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.full-screen {
+  position: fixed;
+  width: 100%;
+  z-index: 999999;
+  top: 0;
+}

@@ -1,13 +1,13 @@
-// 📀 LOAD THREE JS -------------------------- 
+// 📀 LOAD THREE JS --------------------------
 
 import * as THREE from './sources/three.module.js';
 import { OrbitControls } from './sources/OrbitControls.js';
 
-// 🌐 GLOBAL VARIABLES -------------------------- 
+// 🌐 GLOBAL VARIABLES --------------------------
 
 let scene, renderer, camera, controls, pointer, raycaster;
 
-// SCRIPTSOURCES 
+// SCRIPTSOURCES
 
 let scriptKeywords = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/keywords.json';
 let scriptCategories = './typo3conf/ext/skeleton/Resources/Public/Themencloud/sources/categories.json';
@@ -18,7 +18,7 @@ raycaster = new THREE.Raycaster();
 
 var nearToPivotPoint = 1; //Info: The higher the closer //5 is very far away, 20 is very close
 
-// RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)-------------------------- 
+// RUN MAIN FUNCTIONS (AND LOAD JSON DATA (D3 Framework is in html!)--------------------------
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
     d3.json(scriptKeywords),
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }, false);
 
-// 🎛 RENDER SETTINGS -------------------------- 
+// 🎛 RENDER SETTINGS --------------------------
 
 renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
 renderer.setPixelRatio(window.devicePixelRatio / 1);
@@ -44,17 +44,17 @@ renderer.setClearColor('rgb(30,30,30)');
 document.getElementsByName("cloudcanvas")[0].appendChild(renderer.domElement);
 //document.body.appendChild(renderer.domElement);
 
-// 🌇 SCENE SETTING -------------------------- 
+// 🌇 SCENE SETTING --------------------------
 
 scene = new THREE.Scene();
 scene.background = new THREE.Color(0x96AFB9);
 
-// 🎥 CAM SETTING -------------------------- 
+// 🎥 CAM SETTING --------------------------
 
 camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
 camera.position.set( 35, 35, 35 );
 
-// CONTROLS SETTING -------------------------- 
+// CONTROLS SETTING --------------------------
 
 controls = new OrbitControls( camera, renderer.domElement );
 controls.target.set(0,0,0);
@@ -65,7 +65,7 @@ controls.maxDistance = 150;
 controls.zoomSpeed = 0.4;
 controls.update();
 
-// 🌞 LIGHT SETTINGS -------------------------- 
+// 🌞 LIGHT SETTINGS --------------------------
 
 const ambiColor = 0x40ff40;
 const ambiIntensity = 5;
@@ -88,17 +88,17 @@ scene.add(light2);
 const helper2 = new THREE.DirectionalLightHelper( light2, 5 );
 //scene.add( helper2 );
 
-// 🎯 MAIN FUNCTION -------------------------- 
+// 🎯 MAIN FUNCTION --------------------------
 
 function init(data) {
 
-	raycaster = new THREE.Raycaster();
+  raycaster = new THREE.Raycaster();
 
   let category = [];
   for (var i = 0; i < data[1].category.length; i++) {
     category.push(data[1].category[i].name);
   }
-  
+
   let keywords1 = [];
   let keywords2 = [];
   let keywords3 = [];
@@ -166,7 +166,7 @@ class categoryCube {
 
     this.categoryString = _categoryText;
     let dynamicTexture = new THREEx.DynamicTexture(900, 300, THREE)
-    
+
     dynamicTexture.drawTextCooked({
       margin: 0.08,
       background: "#D7FE1A",  //Here is the Color of the
@@ -188,17 +188,17 @@ class categoryCube {
     dynamicTexture.texture.repeat.y = 3;
 
     this.material =  new THREE.MeshPhongMaterial({
-       map: dynamicTexture.texture,
+      map: dynamicTexture.texture,
     }),
-    
-    // MESH, NAME OF THE MESH, AND IT'S POSITIONING
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
+
+        // MESH, NAME OF THE MESH, AND IT'S POSITIONING
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.name = "categoryCube";
     this.mesh.position.set( categoryCubeXPos,categoryCubeYPos,categoryCubeZPos);
   }
 }
 
-// CLASS FOR SINGLE CUBE -------------------------- 
+// CLASS FOR SINGLE CUBE --------------------------
 
 class Cube {
 
@@ -215,7 +215,7 @@ class Cube {
 
     dynamicTexture.drawTextCooked({
       margin: 0.1,
-      background: "#D7FE1A", 
+      background: "#D7FE1A",
       text: this.keywordString,
       lineHeight: 0.25,
       fillStyle: "black",
@@ -231,14 +231,14 @@ class Cube {
     dynamicTexture.texture.repeat.y = 3;
 
     this.material = new THREE.MeshPhongMaterial({
-     map: dynamicTexture.texture,
+      map: dynamicTexture.texture,
     })
 
     // MESH, MESH NAME AND IT'S POSITIONING
-  
+
     this.mesh = new THREE.Mesh(this.geometry, this.material);
 
-    scene.add(this.mesh); 
+    scene.add(this.mesh);
     this.mesh.name = "smallCube" + categoryNumber;
 
     this.mesh.position.x = randomCategoryCubeXPos;
@@ -247,7 +247,7 @@ class Cube {
   }
 }
 
-// FUNCTION TO GENERATE CATEGORIE CLOUD (e.g. Digitalisierung) -------------------------- 
+// FUNCTION TO GENERATE CATEGORIE CLOUD (e.g. Digitalisierung) --------------------------
 
 class generate_categoryCloud {
 
@@ -262,39 +262,39 @@ class generate_categoryCloud {
       let randomCategoryCubeXPos = categoryCubeXPos + Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1)/nearToPivotPoint;
       let randomCategoryCubeYPos = categoryCubeYPos + Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1)/nearToPivotPoint;
       let randomCategoryCubeZPos = categoryCubeZPos + Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1)/nearToPivotPoint;
-      
+
       const cube = new Cube(keywordText, randomCategoryCubeXPos, randomCategoryCubeYPos, randomCategoryCubeZPos, categoryNumber);
       scene.add(cube.mesh);
-    } 
+    }
   }
-  
+
 }
 
-// 🎯 FUNCTION TO GENERATE BIG THEMENCLOUD INCLUDING ALL 8 CATEGORIES -------------------------- 
+// 🎯 FUNCTION TO GENERATE BIG THEMENCLOUD INCLUDING ALL 8 CATEGORIES --------------------------
 
 function generate_cloud(category, keyWordList, keyWordLengthList) {
-  
+
   let categoryCubeXcoords = [3,10,12,-5,12,-6,7,-25];
   let categoryCubeYcoords = [3,2,20,7,-3,6,-17,2];
   let categoryCubeZcoords = [3,-10,22,23,-3,12,-6,7];
 
   //generate 8 Category Cubes for the 8 Categories
   for (let i = 0; i < 8; i++) {
-      
-      let categoryText = category[i];
-      let categoryCubeXPos = categoryCubeXcoords[i];
-      let categoryCubeYPos = categoryCubeYcoords[i];
-      let categoryCubeZPos = categoryCubeZcoords[i];
 
-      let specialKeywordList = keyWordList[i];
-      let specialKeywordLengthList = keyWordLengthList[i];
+    let categoryText = category[i];
+    let categoryCubeXPos = categoryCubeXcoords[i];
+    let categoryCubeYPos = categoryCubeYcoords[i];
+    let categoryCubeZPos = categoryCubeZcoords[i];
 
-      const categoryCubes = new categoryCube(categoryText, categoryCubeXPos, categoryCubeYPos, categoryCubeZPos);
-      scene.add(categoryCubes.mesh);
+    let specialKeywordList = keyWordList[i];
+    let specialKeywordLengthList = keyWordLengthList[i];
 
-      let categoryNumber = [i];
-      const categoryClouds = new generate_categoryCloud(specialKeywordList, specialKeywordLengthList, categoryCubeXPos, categoryCubeYPos, categoryCubeZPos, categoryNumber);
-    }
+    const categoryCubes = new categoryCube(categoryText, categoryCubeXPos, categoryCubeYPos, categoryCubeZPos);
+    scene.add(categoryCubes.mesh);
+
+    let categoryNumber = [i];
+    const categoryClouds = new generate_categoryCloud(specialKeywordList, specialKeywordLengthList, categoryCubeXPos, categoryCubeYPos, categoryCubeZPos, categoryNumber);
+  }
 }
 
 function onClick( event ) {
@@ -308,7 +308,7 @@ function onClick( event ) {
   var intersectss = raycaster.intersectObjects(scene.children);
 
   nearToPivotPoint = nearToPivotPoint*2;
-  
+
   for (let i = 0; i < intersectss.length; i++) {
     //intersectss[i].object.position.x = 10;
     intersectss[i].object.material.emissiveIntensity = 40;
@@ -317,7 +317,7 @@ function onClick( event ) {
 }
 
 
-// ANIMATE FUNCTION -------------------------- 
+// ANIMATE FUNCTION --------------------------
 
 const v0 = new THREE.Vector3(3,3,3);
 const v1 = new THREE.Vector3(10,2,-10);
@@ -334,26 +334,28 @@ function animate() {
 
   var MIN_DISTANCE = 6;
   const speed = 0.005;
-   
+
   controls.update();
   renderer.render(scene, camera);
 
   // BUTTONS
   document.getElementById("start").onclick = function () {
-  document.getElementById("explore").style.display = "none";
-  document.getElementById("exit").style.display = "flex";
+    document.getElementById("explore").style.display = "none";
+    document.getElementById("exit").style.display = "flex";
+    document.getElementById("themencloud").classList.add('full-screen');
   };
 
   document.getElementById("stop").onclick = function () {
-  document.getElementById("explore").style.display = "flex";
-  document.getElementById("exit").style.display = "none";
+    document.getElementById("explore").style.display = "flex";
+    document.getElementById("exit").style.display = "none";
+    document.getElementById("themencloud").classList.remove('full-screen');
   };
-  
+
   window.requestAnimationFrame(animate);
 
 }
 
-// ON WINDOW RESIZE FUNCTION -------------------------- 
+// ON WINDOW RESIZE FUNCTION --------------------------
 
 function onWindowResize() {
 
@@ -362,7 +364,7 @@ function onWindowResize() {
   renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-// 🔶 ORIENTATION CUBES FOR AXES -------------------------- 
+// 🔶 ORIENTATION CUBES FOR AXES --------------------------
 
 function helper() {
 
