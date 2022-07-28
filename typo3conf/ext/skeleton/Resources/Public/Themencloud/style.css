@@ -48,6 +48,12 @@ button:hover {
   color: black;
 }
 
+.language-button {
+  position: absolute;
+  left: 40px;
+  z-index: 100;
+}
+
 .visible-by-click {
   position: fixed;
   width: 100vw;

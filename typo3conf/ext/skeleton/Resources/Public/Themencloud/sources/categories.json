@@ -1,36 +1,44 @@
 {
-"category": [
+"categories": [
  {
     "name": "Digitalisierung",
-    "word": "Digitalisierung"
+    "wordDE": "Digitalisierung",
+    "wordEN": "Digitalisation"
  },
  {
     "name": "Stadtentwicklung",
-    "word": "Stadtentwicklung"
+    "wordDE": "Stadtentwicklung",
+    "wordEN": "Urban Development"
  },
  {
     "name": "Zukunftsforschung",
-    "word": "Zukunftsforschung"
+    "wordDE": "Zukunftsforschung",
+    "wordEN": "Future Research"
  },
  {
     "name": "Circular City",
-    "word": "Circular City"
+    "wordDE": "Circular City",
+    "wordEN": "Circular City"
  },
  {
     "name": "Klimawandel",
-    "word": "Klimawandel"
+    "wordDE": "Klimawandel",
+    "wordEN": "Climate Change"
  },
  {
     "name": "Innovation",
-    "word": "Innovation"
+    "wordDE": "Innovation",
+    "wordEN": "Innovation"
  },
  {
     "name": "Nachhaltigkeit",
-    "word": "Nachhaltigkeit"
+    "wordDE": "Nachhaltigkeit",
+    "wordEN": "Sustainability"
  },
  {
-    "name": "Nachhaltigkeits- innovationen",
-    "word": "Nachhaltigkeitsinnovationen"
+    "name": "Nachhaltigkeitsinnovationen",
+    "wordDE": "Nachhaltigkeits- innovationen",
+    "wordEN": "Sustainability Innovation"
  }
 ]
 }

@@ -6,6 +6,9 @@ import { OrbitControls } from './sources/OrbitControls.js';
 // 🌐 GLOBAL VARIABLES --------------------------
 
 let scene, renderer, camera, controls, pointer, raycaster;
+const CATEGORY_COUNT = 8;
+
+var language = "german"
 
 // SCRIPTSOURCES
 
@@ -14,7 +17,6 @@ let scriptCategories = './typo3conf/ext/skeleton/Resources/Public/Themencloud/so
 
 // INTERACTION!
 pointer = new THREE.Vector2();
-raycaster = new THREE.Raycaster();
 
 var nearToPivotPoint = 1; //Info: The higher the closer //5 is very far away, 20 is very close
 
@@ -65,28 +67,7 @@ controls.maxDistance = 150;
 controls.zoomSpeed = 0.4;
 controls.update();
 
-// 🌞 LIGHT SETTINGS --------------------------
 
-const ambiColor = 0x40ff40;
-const ambiIntensity = 5;
-const ambiLight = new THREE.AmbientLight(ambiColor, ambiIntensity);
-scene.add(ambiLight);
-
-//DIR LIGHT 1
-const light1 = new THREE.DirectionalLight(0xffffff, 2.5);
-light1.position.set(17, 30, -50);
-scene.add(light1);
-//DIR LIGHT 1 HELPER
-const helper1 = new THREE.DirectionalLightHelper( light1, 5 );
-//scene.add( helper1 );
-
-//DIR LIGHT 2
-const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
-light2.position.set(-50, 30, 17);
-scene.add(light2);
-//DIR LIGHT 2 HELPER
-const helper2 = new THREE.DirectionalLightHelper( light2, 5 );
-//scene.add( helper2 );
 
 // 🎯 MAIN FUNCTION --------------------------
 
@@ -94,60 +75,83 @@ function init(data) {
 
   raycaster = new THREE.Raycaster();
 
-  let category = [];
-  for (var i = 0; i < data[1].category.length; i++) {
-    category.push(data[1].category[i].name);
+  // 🌞 LIGHT SETTINGS --------------------------
+  const ambiColor = 0x40ff40;
+  const ambiIntensity = 5;
+  const ambiLight = new THREE.AmbientLight(ambiColor, ambiIntensity);
+  scene.add(ambiLight);
+
+  //DIR LIGHT 1
+  const light1 = new THREE.DirectionalLight(0xffffff, 2.5);
+  light1.position.set(17, 30, -50);
+  scene.add(light1);
+  //DIR LIGHT 1 HELPER
+  const helper1 = new THREE.DirectionalLightHelper( light1, 5 );
+  //scene.add( helper1 );
+
+  //DIR LIGHT 2
+  const light2 = new THREE.DirectionalLight(0xffffff, 0.5);
+  light2.position.set(-50, 30, 17);
+  scene.add(light2);
+  //DIR LIGHT 2 HELPER
+  const helper2 = new THREE.DirectionalLightHelper( light2, 5 );
+  //scene.add( helper2 );
+  
+  //Get Categories
+
+  let categories = [];
+  for (var i = 0; i < data[1].categories.length; i++) {
+    if (language == "german") {
+      categories.push(data[1].categories[i].wordDE);
+    } 
+    else {
+      categories.push(data[1].categories[i].wordEN);
+    }    
   }
 
-  let keywords1 = [];
-  let keywords2 = [];
-  let keywords3 = [];
-  let keywords4 = [];
-  let keywords5 = [];
-  let keywords6 = [];
-  let keywords7 = [];
-  let keywords8 = [];
+  //Get Keywords
 
-  for (var i = 0; i < data[0].article.length; i++) {
-    if (data[0].article[i].Digitalisierung == 'x') {
-      keywords1.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Stadtentwicklung == 'x') {
-      keywords2.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Zukunftsforschung == 'x') {
-      keywords3.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].CircularCity == 'x') {
-      keywords4.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Klimawandel == 'x') {
-      keywords5.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Innovation == 'x') {
-      keywords6.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Nachhaltigkeit == 'x') {
-      keywords7.push(data[0].article[i].Stichwort);
-    }
-    if (data[0].article[i].Nachhaltigkeitsinnovationen == 'x') {
-      keywords8.push(data[0].article[i].Stichwort);
+  const articles = data[0].articles;
+
+  let keywords = {};
+
+  for (const article of articles) {
+    for (const key_value_pair of Object.entries(article)) {
+      
+      const key = key_value_pair[0];
+      const value = key_value_pair[1];
+
+      if (value == "x") {
+        if (key in keywords) {
+          if (language == "german") {
+            keywords[key].push(article["Stichwort"]);
+          }
+          else {
+            keywords[key].push(article["Übersetzung"]);
+          }
+        }
+
+        else {
+          if (language == "german") {
+            keywords[key] = [article["Stichwort"]];
+          }
+          else {
+            keywords[key] = [article["Übersetzung"]];
+          }
+        }
+      }
     }
   }
 
-  let keywords1Length = keywords1.length;
-  let keywords2Length = keywords2.length;
-  let keywords3Length = keywords3.length;
-  let keywords4Length = keywords4.length;
-  let keywords5Length = keywords5.length;
-  let keywords6Length = keywords6.length;
-  let keywords7Length = keywords7.length;
-  let keywords8Length = keywords8.length;
+  // TODO check if order of keys and values are guarantueed to be the same 
+  const keyWordList = Object.values(keywords);
+  const keyWordLengthList = []
+  
+  for (const array of Object.values(keywords)) {
+    keyWordLengthList.push(array.length);
+  }
 
-  let keyWordList = [keywords1, keywords2, keywords3, keywords4, keywords5, keywords6, keywords7, keywords8];
-  let keyWordLengthList = [keywords1Length, keywords2Length, keywords3Length, keywords4Length, keywords5Length, keywords6Length, keywords7Length, keywords8Length]
-
-  generate_cloud(category, keyWordList, keyWordLengthList);
+  generate_cloud(categories, keyWordList, keyWordLengthList);
 
   window.addEventListener( 'resize', onWindowResize );
 }
@@ -187,12 +191,12 @@ class categoryCube {
     dynamicTexture.texture.offset.y = -1.9;
     dynamicTexture.texture.repeat.y = 3;
 
-    this.material =  new THREE.MeshPhongMaterial({
+    this.material = new THREE.MeshPhongMaterial({
       map: dynamicTexture.texture,
     }),
 
-        // MESH, NAME OF THE MESH, AND IT'S POSITIONING
-        this.mesh = new THREE.Mesh(this.geometry, this.material);
+    // MESH, NAME OF THE MESH, AND IT'S POSITIONING
+    this.mesh = new THREE.Mesh(this.geometry, this.material);
     this.mesh.name = "categoryCube";
     this.mesh.position.set( categoryCubeXPos,categoryCubeYPos,categoryCubeZPos);
   }
@@ -279,7 +283,7 @@ function generate_cloud(category, keyWordList, keyWordLengthList) {
   let categoryCubeZcoords = [3,-10,22,23,-3,12,-6,7];
 
   //generate 8 Category Cubes for the 8 Categories
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < CATEGORY_COUNT; i++) {
 
     let categoryText = category[i];
     let categoryCubeXPos = categoryCubeXcoords[i];
@@ -319,18 +323,19 @@ function onClick( event ) {
 
 // ANIMATE FUNCTION --------------------------
 
-const v0 = new THREE.Vector3(3,3,3);
+/*const v0 = new THREE.Vector3(3,3,3);
 const v1 = new THREE.Vector3(10,2,-10);
 const v2 = new THREE.Vector3(12,20,22);
 const v3 = new THREE.Vector3(-5,7,23);
 const v4 = new THREE.Vector3(12,-3,-3);
 const v5 = new THREE.Vector3(-6,6,12);
 const v6 = new THREE.Vector3(7,-17,-6);
-const v7 = new THREE.Vector3(-25,2,7);
+const v7 = new THREE.Vector3(-25,2,7);*/
 
 function animate() {
 
   let test = scene.children.length;
+  
 
   var MIN_DISTANCE = 6;
   const speed = 0.005;
@@ -349,6 +354,35 @@ function animate() {
     document.getElementById("explore").style.display = "flex";
     document.getElementById("exit").style.display = "none";
     document.getElementById("themencloud").classList.remove('full-screen');
+  };
+
+  // Language Button
+  document.getElementById("language").changeLanguage = function () {
+    if (language == "german") {
+      document.getElementById("language").textContent = "Deutsch";
+      language = "english";
+      while(scene.children.length > 0){ 
+        scene.remove(scene.children[0]); 
+      }
+      Promise.all([
+        d3.json(scriptKeywords),
+        d3.json(scriptCategories),
+      ]).then(function (data) {
+        init(data);
+      });
+    } else {
+      document.getElementById("language").textContent = "English";
+      language = "german";
+      while(scene.children.length > 0){ 
+      scene.remove(scene.children[0]); 
+      }
+      Promise.all([
+        d3.json(scriptKeywords),
+        d3.json(scriptCategories),
+      ]).then(function (data) {
+        init(data);
+      });
+    }
   };
 
   window.requestAnimationFrame(animate);
